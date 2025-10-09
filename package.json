@@ -1,0 +1,32 @@
+{
+  "name": "glycemic-map",
+  "version": "1.0.0",
+  "description": "A project for monitoring and analyzing glycemic levels with automated PDF report generation.",
+  "main": "dist/main.js",
+  "scripts": {
+    "start": "nest start",
+    "start:dev": "nest start --watch",
+    "build": "nest build",
+    "test": "jest",
+    "test:e2e": "jest --config test/jest-e2e.json"
+  },
+  "dependencies": {
+    "@nestjs/common": "^9.0.0",
+    "@nestjs/core": "^9.0.0",
+    "@nestjs/platform-express": "^9.0.0",
+    "class-validator": "^0.13.2",
+    "class-transformer": "^0.5.0",
+    "pdfkit": "^0.12.1",
+    "typeorm": "^0.2.41",
+    "pg": "^8.7.1"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "^10.0.0",
+    "@nestjs/testing": "^9.0.0",
+    "ts-jest": "^27.0.0",
+    "jest": "^27.0.0",
+    "ts-loader": "^9.2.6",
+    "typescript": "^4.5.4"
+  },
+  "license": "MIT"
+}
