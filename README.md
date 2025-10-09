@@ -14,7 +14,7 @@ O **Glycemic Map** é uma aplicação desenvolvida para auxiliar no controle e m
 ## 🎯 Funcionalidades
 
 - ✅ Registro de glicemia por data e hora
-- ✅ Chttps://github.com/didibrabosa/glycemic-maplassificação automática dos resultados:
+- ✅ Classificação automática dos resultados:
   - **Hipoglicemia**: < 70 mg/dL
   - **Normal**: 70-179 mg/dL
   - **Hiperglicemia**: > 180 mg/dL
@@ -34,3 +34,7 @@ O PDF gerado contém uma tabela estruturada com:
 | 01/10/2025 | 07:30 | 85 | Normal | Jejum |
 | 01/10/2025 | 14:45 | 210 | Hiperglicemia | Pós-prandial |
 | 02/10/2025 | 16:20 | 65 | Hipoglicemia | Pós-exercício |
+
+### Licença
+Este projeto está licenciado sob a Licença MIT.
+Veja o `LICENSE.txt` para mais detalhes.
