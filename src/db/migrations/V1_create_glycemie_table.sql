@@ -4,6 +4,6 @@ CREATE TABLE  IF NOT EXISTS glycemie (
     result VARCHAR(50) NOT NULL,
     meal VARCHAR(50),
     observation TEXT,
-    glycemie_hour TIME NOT NULL,
-    glycemie_date DATE NOT NULL
+    created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMP DEFAULT NULL
 );
