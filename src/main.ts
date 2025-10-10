@@ -3,9 +3,11 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 import { LoggingInterceptor } from './common/interceptors/logging.interceptor';
 import { HttpExceptionFilter } from './common/filters/http-exception.filter';
+import { Logger } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  const logger = new Logger('Main');
   
   app.enableCors();
   app.useGlobalInterceptors(new LoggingInterceptor());
@@ -19,12 +21,10 @@ async function bootstrap() {
     .build();
 
     const document = SwaggerModule.createDocument(app, config);
-    SwaggerModule.setup('/glycemic-map-api/swagger', app, document, {
-      customSiteTitle: 'Glycemic Map API',
-      customCss: '.swagger-ui .topbar { display: none }',
-  });
+    SwaggerModule.setup('/glycemic-map-api/swagger', app, document,
+    );
   
   await app.listen(3000);
-  console.log('Application is running on: http://localhost:3000');
+  logger.log('🚀 Application is running on: http://localhost:3000');
 }
 bootstrap();
