@@ -31,6 +31,4 @@ LICENSE
 .github/
 docs/
 .editorconfig
-tsconfig.json
-tsconfig.build.json
 nest-cli.json
