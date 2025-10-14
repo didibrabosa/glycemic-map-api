@@ -16,7 +16,7 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
     .setTitle('Glycemic Map API')
-    .setDescription('API for monitoring and analyzing blood glucose levels with automated PDF report generation')
+    .setDescription('API for monitoring and analyzing glycemic levels with automated generation of PDF reports')
     .setVersion('1.0')
     .build();
 
