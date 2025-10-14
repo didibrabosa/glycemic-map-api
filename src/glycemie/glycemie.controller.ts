@@ -1,4 +1,4 @@
-import { Body, Controller, HttpException, HttpStatus, Post } from "@nestjs/common";
+import { Body, Controller, Get, HttpException, HttpStatus, Post } from "@nestjs/common";
 import { ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { GlycemieService } from "./glycemie.service";
 import { CreateGlycemieDto } from "./dtos/create-glycemie.dto";
@@ -14,7 +14,7 @@ export class GlycemieConstroller {
 
     @Post('/')
     @ApiOperation({
-        summary: 'Create a glycemie',
+        summary: 'Create a glycemie measurement',
         description: 'Records a new glycemie measurement with automatic classification'
     })
     @ApiResponse({ 
@@ -24,10 +24,29 @@ export class GlycemieConstroller {
     })
     @ApiResponse({
         status: HttpStatus.BAD_REQUEST,
-        description: 'Error in create a new Vehicle',
+        description: 'Error in create a new glycemie',
         type: ErrorResponseDto,
       })
     async create(@Body() body: CreateGlycemieDto,): Promise <GlycemieResponseDto> {
-        return this.service.create(new CreateGlycemieDto(body))
+        return this.service.create(body);
+    }
+
+    @ApiOperation({
+        summary: 'Get all glycemie measurements',
+        description: 'Retrieves a complete list of all glycemie measurements with their classifications and timestamps'
+    })
+    @ApiResponse({ 
+        status: HttpStatus.OK,
+        description: 'List of glycemie measurements retrieved successfully',
+        type: [GlycemieResponseDto]
+    })
+    @ApiResponse({
+        status: HttpStatus.BAD_REQUEST,
+        description: 'Error in listing all glycemies',
+        type: ErrorResponseDto,
+      })
+    @Get('/')
+    async getAll(): Promise<GlycemieResponseDto[]> {
+        return this.service.getdAll();
     }
 }

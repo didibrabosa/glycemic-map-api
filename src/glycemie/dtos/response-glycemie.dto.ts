@@ -2,7 +2,6 @@ import { ApiProperty } from "@nestjs/swagger";
 import { Glycemie } from "../entites/glycemie.entitie";
 
 export class GlycemieResponseDto {
-
     @ApiProperty({
         description: 'Glycemie id',
         example: 1

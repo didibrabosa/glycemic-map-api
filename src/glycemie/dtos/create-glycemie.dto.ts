@@ -20,13 +20,4 @@ export class CreateGlycemieDto {
     @IsString()
     @IsNotEmpty()
     meal: string;
-
-    constructor(init?: Partial<CreateGlycemieDto>) {
-        Object.assign(this, init);
-      }
-    
-    asEntity(): Glycemie {
-        const entity = Object.assign(new Glycemie(), this);
-        return entity;
-    }
 }

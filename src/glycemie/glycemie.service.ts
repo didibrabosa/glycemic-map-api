@@ -5,6 +5,7 @@ import { CreateGlycemieDto } from "./dtos/create-glycemie.dto";
 import { Glycemie } from "./entites/glycemie.entitie";
 import { GlycemieResponseDto } from "./dtos/response-glycemie.dto";
 import { classifyGlycemie } from "../common/enums/glycemie-satus.enum";
+import { EntityListenerMetadata } from "typeorm/metadata/EntityListenerMetadata";
 
 @Injectable()
 export class GlycemieService {
@@ -24,5 +25,10 @@ export class GlycemieService {
 
         const result = await this.repository.create(entity);
         return new GlycemieResponseDto(result);
+    }
+
+    async getdAll(): Promise<GlycemieResponseDto[]> {
+        const result = await this.repository.getAll()
+        return result.map(glycemies => new GlycemieResponseDto(glycemies));
     }
 }
