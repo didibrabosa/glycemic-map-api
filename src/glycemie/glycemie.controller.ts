@@ -1,4 +1,4 @@
-import { Body, Controller, Get, HttpException, HttpStatus, Post } from "@nestjs/common";
+import { Body, Controller, Delete, Get, HttpException, HttpStatus, Param, Post } from "@nestjs/common";
 import { ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { GlycemieService } from "./glycemie.service";
 import { CreateGlycemieDto } from "./dtos/create-glycemie.dto";
@@ -48,5 +48,23 @@ export class GlycemieConstroller {
     @Get('/')
     async getAll(): Promise<GlycemieResponseDto[]> {
         return this.service.getdAll();
+    }
+
+    @ApiOperation({
+        summary: 'Delete a glycemie measurement',
+        description: 'Deletes a specific glycemie measurement by id'
+    })
+    @ApiResponse({ 
+        status: HttpStatus.OK,
+        description: 'Glycemie measurement deleted successfully'
+    })
+    @ApiResponse({
+        status: HttpStatus.BAD_REQUEST,
+        description: 'Error in delete a glycemie',
+        type: ErrorResponseDto,
+    })
+    @Delete('/:id')
+    async delete(@Param('id') glycemiaId: number): Promise<void> {
+        return this.service.delete(glycemiaId);
     }
 }

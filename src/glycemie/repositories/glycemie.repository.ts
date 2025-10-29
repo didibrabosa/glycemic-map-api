@@ -16,4 +16,8 @@ export class GlycemieRepository {
     async getAll(): Promise<Glycemie[]> {
         return this.repository.find();
     }
+
+    async delete(glycemiaId: number): Promise<void> {
+        return this.repository.delete(glycemiaId);
+    }
 }
