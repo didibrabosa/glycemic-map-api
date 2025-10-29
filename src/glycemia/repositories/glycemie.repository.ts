@@ -1,19 +1,19 @@
-import { Glycemie } from "../entites/glycemie.entitie";
+import { Glycemia } from "../entites/glycemia.entitie";
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 
 @Injectable()
-export class GlycemieRepository {
+export class GlycemiaRepository {
     constructor(
-        @InjectRepository(Glycemie)
+        @InjectRepository(Glycemia)
         private readonly repository
     ) {}
     
-    async create(glycemie: Glycemie): Promise<Glycemie> {
-        return this.repository.save(glycemie);
+    async create(glycemia: Glycemia): Promise<Glycemia> {
+        return this.repository.save(glycemia);
     }
 
-    async getAll(): Promise<Glycemie[]> {
+    async getAll(): Promise<Glycemia[]> {
         return this.repository.find();
     }
 

@@ -1,8 +1,7 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { IsNotEmpty, IsNumber, IsString } from "class-validator";
-import { Glycemie } from "../entites/glycemie.entitie";
 
-export class CreateGlycemieDto {
+export class CreateGlycemiaDto {
     @ApiProperty({
         description: 'Measured blood sugar level in mg/dL',
         required: true,
@@ -10,7 +9,7 @@ export class CreateGlycemieDto {
     })
     @IsNumber()
     @IsNotEmpty()
-    glycemie: number;
+    glycemia: number;
 
     @ApiProperty({
         description: 'Meal type at the time of measurement',

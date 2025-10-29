@@ -1,21 +1,21 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { Glycemie } from "../entites/glycemie.entitie";
+import { Glycemia } from "../entites/glycemia.entitie";
 
-export class GlycemieResponseDto {
+export class GlycemiaResponseDto {
     @ApiProperty({
-        description: 'Glycemie id',
+        description: 'Glycemia id',
         example: 1
     })
-    glycemieId: number;
+    glycemiaId: number;
 
     @ApiProperty({
         description: 'Measured blood sugar level in mg/dL',
         example: 95
     })
-    glycemie: number;
+    glycemia: number;
 
     @ApiProperty({
-        description: 'Classification of glycemie level',
+        description: 'Classification of glycemia level',
         example: 'Normal'
     })
     result: string;
@@ -38,12 +38,12 @@ export class GlycemieResponseDto {
     })
     updatedAt: Date;
 
-    constructor(glycemie: Glycemie) {
-        this.glycemieId = glycemie.glycemieId;
-        this.glycemie = glycemie.glycemie;
-        this.result = glycemie.result;
-        this.meal = glycemie.meal;
-        this.measuredAt = glycemie.created_at;
-        this.updatedAt = glycemie.updated_at;
+    constructor(glycemia: Glycemia) {
+        this.glycemiaId = glycemia.glycemiaId;
+        this.glycemia = glycemia.glycemia;
+        this.result = glycemia.result;
+        this.meal = glycemia.meal;
+        this.measuredAt = glycemia.created_at;
+        this.updatedAt = glycemia.updated_at;
     }
 }

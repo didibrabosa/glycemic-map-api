@@ -1,6 +1,6 @@
-CREATE TABLE  IF NOT EXISTS glycemie (
-    glycemie_id SERIAL PRIMARY KEY,
-    glycemie NUMERIC(5,2) NOT NULL,
+CREATE TABLE  IF NOT EXISTS glycemia (
+    glycemia_id SERIAL PRIMARY KEY,
+    glycemia NUMERIC(5,2) NOT NULL,
     result VARCHAR(50) NOT NULL,
     meal VARCHAR(50),
     observation TEXT,
