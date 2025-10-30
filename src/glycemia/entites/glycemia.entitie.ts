@@ -17,11 +17,14 @@ export class Glycemia {
     result: GlycemiaStatus;
 
     @Column({name: 'meal'})
-    meal: string
+    meal: string;
+
+    @Column({name: 'observation'})
+    observation: string;
 
     @Column({name: 'created_at'})
-    created_at: Date
+    created_at: Date;
 
     @Column({name: 'updated_at'})
-    updated_at: Date
+    updated_at: Date;
 }

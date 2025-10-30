@@ -1,5 +1,5 @@
 import { Injectable } from "@nestjs/common";
-import { GlycemiaRepository } from "./repositories/glycemie.repository";
+import { GlycemiaRepository } from "./repositories/glycemia.repository";
 import { CreateGlycemiaDto } from "./dtos/create-glycemia.dto";
 import { Glycemia } from "./entites/glycemia.entitie";
 import { GlycemiaResponseDto } from "./dtos/response-glycemia.dto";
@@ -16,6 +16,7 @@ export class GlycemiaService {
         entity.glycemia = dto.glycemia;
         entity.result = classifyGlycemia(dto.glycemia);
         entity.meal = dto.meal;
+        entity.observation = dto.observation;
 
         const date = new Date();
         entity.created_at = date;
@@ -31,6 +32,6 @@ export class GlycemiaService {
     }
 
     async deleteGlycemia(glycemiaId: number): Promise<void> {
-        return this.repository.deleteGlycemia(glycemiaId);
+        this.repository.deleteGlycemia(glycemiaId);
     }
 }

@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, HttpStatus, Param, Post } from "@nestjs/common";
+import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, Post } from "@nestjs/common";
 import { ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { GlycemiaService } from "./glycemia.service";
 import { CreateGlycemiaDto } from "./dtos/create-glycemia.dto";
@@ -55,8 +55,8 @@ export class GlycemiaConstroller {
         description: 'Deletes a specific glycemia measurement by id'
     })
     @ApiResponse({ 
-        status: HttpStatus.OK,
-        description: 'Glycemia measurement deleted successfully'
+        status: HttpStatus.NO_CONTENT,
+        description: 'Glycemia measurement deleted successfully',
     })
     @ApiResponse({
         status: HttpStatus.BAD_REQUEST,
@@ -64,7 +64,8 @@ export class GlycemiaConstroller {
         type: ErrorResponseDto,
     })
     @Delete('/:id')
+    @HttpCode(HttpStatus.NO_CONTENT)
     async deleteGlycemia(@Param('id') glycemiaId: number): Promise<void> {
-        return this.service.deleteGlycemia(glycemiaId);
+        this.service.deleteGlycemia(glycemiaId);
     }
 }

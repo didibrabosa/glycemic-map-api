@@ -1,5 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsNotEmpty, IsNumber, IsString } from "class-validator";
+import { IsNotEmpty, IsNumber, IsOptional, IsString, MaxLength } from "class-validator";
 
 export class CreateGlycemiaDto {
     @ApiProperty({
@@ -9,6 +9,7 @@ export class CreateGlycemiaDto {
     })
     @IsNumber()
     @IsNotEmpty()
+    @MaxLength(999)
     glycemia: number;
 
     @ApiProperty({
@@ -18,5 +19,15 @@ export class CreateGlycemiaDto {
     })
     @IsString()
     @IsNotEmpty()
+    @MaxLength(50)
     meal: string;
+
+    @ApiProperty({
+        description: 'Observation of measurement',
+        required: false,
+        example: 'In fasting'
+    })
+    @IsString()
+    @IsOptional()
+    observation: string;
 }

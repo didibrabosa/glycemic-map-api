@@ -27,6 +27,13 @@ export class GlycemiaResponseDto {
     meal: string;
 
     @ApiProperty({
+        description: 'Observation of measurement',
+        required: false,
+        example: 'In fasting'
+    })
+    observation: string;
+
+    @ApiProperty({
         description: 'When the measurement was created',
         example: '2025-10-14T13:30:00.000Z'
     })
@@ -43,6 +50,7 @@ export class GlycemiaResponseDto {
         this.glycemia = glycemia.glycemia;
         this.result = glycemia.result;
         this.meal = glycemia.meal;
+        this.observation = glycemia.observation;
         this.measuredAt = glycemia.created_at;
         this.updatedAt = glycemia.updated_at;
     }

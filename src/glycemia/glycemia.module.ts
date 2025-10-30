@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Glycemia } from './entites/glycemia.entitie';
-import { GlycemiaRepository } from './repositories/glycemie.repository';
+import { GlycemiaRepository } from './repositories/glycemia.repository';
 import { GlycemiaService } from './glycemia.service';
 import { GlycemiaConstroller } from './glycemia.controller';
 

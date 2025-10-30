@@ -18,6 +18,6 @@ export class GlycemiaRepository {
     }
 
     async deleteGlycemia(glycemiaId: number): Promise<void> {
-        return this.repository.delete(glycemiaId);
+        this.repository.delete(glycemiaId);
     }
 }
