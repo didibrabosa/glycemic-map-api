@@ -3,7 +3,7 @@ CREATE TABLE  IF NOT EXISTS glycemia (
     glycemia NUMERIC(5,2) NOT NULL,
     result VARCHAR(50) NOT NULL,
     meal VARCHAR(50),
+    observation TEXT,
     created_at TIMESTAMP NOT NULL DEFAULT NOW(),
-    updated_at TIMESTAMP DEFAULT NULL,
-    observation TEXT
+    updated_at TIMESTAMP DEFAULT NULL
 );
