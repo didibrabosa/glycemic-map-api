@@ -27,8 +27,8 @@ export class GlycemiaConstroller {
         description: 'Error in create a new glycemia',
         type: ErrorResponseDto,
       })
-    async create(@Body() body: CreateGlycemiaDto,): Promise <GlycemiaResponseDto> {
-        return this.service.create(body);
+    async createGlycemia(@Body() body: CreateGlycemiaDto,): Promise <GlycemiaResponseDto> {
+        return this.service.createGlycemia(body);
     }
 
     @ApiOperation({
@@ -46,8 +46,8 @@ export class GlycemiaConstroller {
         type: ErrorResponseDto,
       })
     @Get('/')
-    async getAll(): Promise<GlycemiaResponseDto[]> {
-        return this.service.getdAll();
+    async getAllGlycemia(): Promise<GlycemiaResponseDto[]> {
+        return this.service.getdAllGlycemia();
     }
 
     @ApiOperation({
@@ -64,7 +64,7 @@ export class GlycemiaConstroller {
         type: ErrorResponseDto,
     })
     @Delete('/:id')
-    async delete(@Param('id') glycemiaId: number): Promise<void> {
-        return this.service.delete(glycemiaId);
+    async deleteGlycemia(@Param('id') glycemiaId: number): Promise<void> {
+        return this.service.deleteGlycemia(glycemiaId);
     }
 }

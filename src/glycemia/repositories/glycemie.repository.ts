@@ -9,15 +9,15 @@ export class GlycemiaRepository {
         private readonly repository
     ) {}
     
-    async create(glycemia: Glycemia): Promise<Glycemia> {
+    async createGlycemia(glycemia: Glycemia): Promise<Glycemia> {
         return this.repository.save(glycemia);
     }
 
-    async getAll(): Promise<Glycemia[]> {
+    async getAllGlycemias(): Promise<Glycemia[]> {
         return this.repository.find();
     }
 
-    async delete(glycemiaId: number): Promise<void> {
+    async deleteGlycemia(glycemiaId: number): Promise<void> {
         return this.repository.delete(glycemiaId);
     }
 }
