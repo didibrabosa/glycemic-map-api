@@ -36,7 +36,7 @@ Thumbs.db
 !.vscode/launch.json
 !.vscode/extensions.json
 
-# dotenv environment variables file
+# .env environment variables file
 .env
 
 # temp directories

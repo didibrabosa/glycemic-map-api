@@ -1,6 +1,7 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, HttpStatus } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { AppService } from './app.service';
+import { ErrorResponseDto } from './common/dtos/error-response.dto';
 
 @ApiTags('Health Check')
 @Controller()
@@ -13,13 +14,15 @@ export class AppController {
     description: 'Check if the application is working correctly'
   })
   @ApiResponse({ 
-    status: 200, 
+    status: HttpStatus.OK, 
     description: 'Application is working',
-    schema: {
-      type: 'string',
-      example: 'health!'
-    }
+    example: 'health!'
   })
+  @ApiResponse({
+    status: HttpStatus.BAD_REQUEST,
+    description: 'Error in the application',
+    type: ErrorResponseDto,
+        })
   getHealth(): string {
     return this.appService.getHealth();
   }

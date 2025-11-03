@@ -1,0 +1,16 @@
+import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { Glycemia } from './entites/glycemia.entitie';
+import { GlycemiaRepository } from './repositories/glycemia.repository';
+import { GlycemiaService } from './glycemia.service';
+import { GlycemiaController } from './glycemia.controller';
+
+@Module({
+  imports: [
+    TypeOrmModule.forFeature([Glycemia])
+  ],
+  controllers: [GlycemiaController],
+  providers: [GlycemiaService, GlycemiaRepository],
+  exports: [GlycemiaService],
+})
+export class GlycemiaModule {}
