@@ -7,7 +7,7 @@ import { ErrorResponseDto } from "../common/dtos/error-response.dto";
 
 @ApiTags('Glycemia')
 @Controller('glycemia')
-export class GlycemiaConstroller {
+export class GlycemiaController {
     constructor(
         private readonly service: GlycemiaService,
     ) {}
@@ -46,8 +46,8 @@ export class GlycemiaConstroller {
         type: ErrorResponseDto,
       })
     @Get('/')
-    async getAllGlycemia(): Promise<GlycemiaResponseDto[]> {
-        return this.service.getdAllGlycemia();
+    async getAllGlycemias(): Promise<GlycemiaResponseDto[]> {
+        return this.service.getdAllGlycemias();
     }
 
     @ApiOperation({
