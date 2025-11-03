@@ -14,7 +14,10 @@ export class GlycemiaRepository {
     }
 
     async getAllGlycemias(): Promise<Glycemia[]> {
-        return this.repository.find();
+        return this.repository
+            .createQueryBuilder("glycemia")
+            .orderBy("glycemia.created_at", "DESC")
+            .getMany();
     }
 
     async deleteGlycemia(glycemiaId: number): Promise<void> {
