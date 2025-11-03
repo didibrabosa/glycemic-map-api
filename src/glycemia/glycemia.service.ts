@@ -19,14 +19,21 @@ export class GlycemiaService {
         entity.observation = dto.observation;
 
         const date = new Date();
-        entity.created_at = date;
-        entity.updated_at = date;
-
+        if (!dto.mesureAt) {
+            entity.created_at = date;
+        }
+        else {
+            entity.created_at = dto.mesureAt;
+        }
+    
+        entity.updated_at = date
+        
+    
         const result = await this.repository.createGlycemia(entity);
         return new GlycemiaResponseDto(result);
     }
 
-    async getdAllGlycemia(): Promise<GlycemiaResponseDto[]> {
+    async getdAllGlycemias(): Promise<GlycemiaResponseDto[]> {
         const result = await this.repository.getAllGlycemias()
         return result.map(glycemias => new GlycemiaResponseDto(glycemias));
     }
