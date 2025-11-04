@@ -1,0 +1,39 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: glycemic_map_api
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - "3001:3001"
+    env_file:
+    - .env
+    depends_on:
+      - db
+    networks:
+      - glycemic_net
+    restart: unless-stopped
+  
+  db:
+    image: postgres:latest
+    container_name: glycemic_map_database
+    volumes:
+      - ./src/db/migrations/:/docker-entrypoint-initdb.d/
+      - postgres_data:/var/lib/postgresql
+    ports:
+      - "5432:5432"
+    env_file:
+      - .env
+    networks:
+      - glycemic_net
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+
+networks:
+  glycemic_net:
+    external: true
