@@ -10,8 +10,8 @@ import { DataSource } from 'typeorm';
     }),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: process.env.HOST || 'db',
-      port: parseInt(process.env.PORT || '5432', 10),
+      host: process.env.HOST,
+      port: parseInt(process.env.POSTGRES_PORT),
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DB,
