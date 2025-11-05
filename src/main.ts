@@ -32,7 +32,10 @@ async function bootstrap() {
     SwaggerModule.setup('/glycemic-map-api/swagger', app, document,
     );
   
-  await app.listen(3001);
-  logger.log('🚀 Application is running on: http://localhost:3001');
+    const port = process.env.API_PORT;
+
+    await app.listen(port, '0.0.0.0');
+  
+    logger.log(`🚀 Application is running on: http://localhost:${port}`);
 }
 bootstrap();
