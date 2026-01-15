@@ -1,4 +1,4 @@
-CREATE TABLE  IF NOT EXISTS glycemia (
+CREATE TABLE IF NOT EXISTS glycemia (
     glycemia_id SERIAL PRIMARY KEY,
     glycemia NUMERIC(3) NOT NULL,
     result VARCHAR(50) NOT NULL,

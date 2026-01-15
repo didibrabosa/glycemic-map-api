@@ -34,7 +34,7 @@ export class CreateGlycemiaDto {
     })
     @IsString()
     @IsOptional()
-    observation: string;
+    observation?: string;
 
     @ApiProperty({
         description: 'Date and time of the measurement',
@@ -43,6 +43,7 @@ export class CreateGlycemiaDto {
         type: String,
     })
     @IsOptional()
+    @Type(() => Date)
     @IsDate()
-    mesureAt?: Date;
+    measuredAt?: Date;
 }

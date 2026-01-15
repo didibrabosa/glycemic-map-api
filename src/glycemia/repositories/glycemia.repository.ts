@@ -13,14 +13,20 @@ export class GlycemiaRepository {
         return this.repository.save(glycemia);
     }
 
-    async getAllGlycemias(): Promise<Glycemia[]> {
+    async getAllGlycemias(userId: string): Promise<Glycemia[]> {
         return this.repository
-            .createQueryBuilder("glycemia")
-            .orderBy("glycemia.created_at", "DESC")
+            .createQueryBuilder('glycemia')
+            .where('glycemia.clerk_user_id = :userId', { userId })
+            .orderBy('glycemia.created_at', 'DESC')
             .getMany();
     }
 
-    async deleteGlycemia(glycemiaId: number): Promise<void> {
-        this.repository.delete(glycemiaId);
+    async deleteGlycemia(glycemiaId: number, userId: string): Promise<void> {
+        return this.repository
+            .createQueryBuilder('glycemia')
+            .delete()
+            .where('glycemia.glycemia_id = :glycemiaId', { glycemiaId })
+            .andWhere('glycemia.clerk_user_id = :userId', { userId })
+            .execute()
     }
 }

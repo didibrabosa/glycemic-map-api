@@ -1,10 +1,13 @@
-import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, Post } from "@nestjs/common";
+import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, Post, Query, UseGuards } from "@nestjs/common";
 import { ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { GlycemiaService } from "./glycemia.service";
 import { CreateGlycemiaDto } from "./dtos/create-glycemia.dto";
 import { GlycemiaResponseDto } from "./dtos/response-glycemia.dto";
 import { ErrorResponseDto } from "../common/dtos/error-response.dto";
+import { ClerkAuthGuard } from "../auth/guards/clerk-auth.guard";
+import { ClerkUserId } from "../common/decorators/clerk-user-id.decorator";
 
+@UseGuards(ClerkAuthGuard)
 @ApiTags('Glycemia')
 @Controller('glycemia')
 export class GlycemiaController {
@@ -27,8 +30,11 @@ export class GlycemiaController {
         description: 'Error in create a new glycemia',
         type: ErrorResponseDto,
       })
-    async createGlycemia(@Body() body: CreateGlycemiaDto,): Promise <GlycemiaResponseDto> {
-        return this.service.createGlycemia(body);
+    async createGlycemia(
+        @Body() body: CreateGlycemiaDto,
+        @ClerkUserId() userId: string,
+    ): Promise <GlycemiaResponseDto> {
+        return this.service.createGlycemia(body, userId);
     }
 
     @ApiOperation({
@@ -46,8 +52,8 @@ export class GlycemiaController {
         type: ErrorResponseDto,
       })
     @Get('/')
-    async getAllGlycemias(): Promise<GlycemiaResponseDto[]> {
-        return this.service.getdAllGlycemias();
+    async getAllGlycemias(@ClerkUserId() userId: string): Promise<GlycemiaResponseDto[]> {
+        return this.service.getdAllGlycemias(userId);
     }
 
     @ApiOperation({
@@ -65,7 +71,10 @@ export class GlycemiaController {
     })
     @Delete('/:id')
     @HttpCode(HttpStatus.NO_CONTENT)
-    async deleteGlycemia(@Param('id') glycemiaId: number): Promise<void> {
-        this.service.deleteGlycemia(glycemiaId);
+    async deleteGlycemia(
+        @Param('id') glycemiaId: number,
+        @ClerkUserId() userId: string,
+    ): Promise<void> {
+        this.service.deleteGlycemia(glycemiaId, userId);
     }
 }

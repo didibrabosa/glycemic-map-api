@@ -28,8 +28,9 @@ export class Glycemia {
     @Column({
         name: 'observation',
         type: 'varchar',
+        nullable: true
     })
-    observation: string;
+    observation?: string;
 
     @Column({
         name: 'created_at',
@@ -42,4 +43,10 @@ export class Glycemia {
         type: 'timestamp',
     })
     updated_at: Date;
+
+    @Column({
+        name: 'clerk_user_id', 
+        type: 'varchar'
+    })
+    clerk_user_id: string;
 }
